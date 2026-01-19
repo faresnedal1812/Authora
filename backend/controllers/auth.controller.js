@@ -125,7 +125,7 @@ export const login = async (req, res) => {
 
     const validPassword = await bcryptjs.compare(
       password,
-      userExisting.password
+      userExisting.password,
     );
 
     if (!validPassword) {
@@ -180,7 +180,7 @@ export const forgotPassword = async (req, res) => {
 
     await sendResetPasswordEmail(
       email,
-      `${process.env.CLIENT_URL}/reset-password/${resetToken}`
+      `${process.env.CLIENT_URL}/reset-password/${resetToken}`,
     );
     res.status(200).json({
       success: true,
